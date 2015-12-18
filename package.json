@@ -1,7 +1,7 @@
 {
-  "name": "acs-shp",
-  "version": "0.1.0",
-  "description": "upload census tiger and cartographic shapefiles to a postgresql postgis database",
+  "name": "acs-shp14",
+  "version": "0.1.1",
+  "description": "upload 2014 census tiger and cartographic shapefiles to a postgresql postgis database",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
