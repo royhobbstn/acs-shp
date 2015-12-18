@@ -159,7 +159,7 @@ function upload() {
         encoding: 'utf8'
     }));
     console.log('tiger bg uploaded');
-    process.stdout.writeSync(child_process.execSync("shp2pgsql -W 'latin1' -s 4326 shp/tiger_pl_14.shp tiger.place | psql -d " + obj.db + " -U " + obj.name + " -h " + obj.host + " -p " + obj.port, {
+    process.stdout.write(child_process.execSync("shp2pgsql -W 'latin1' -s 4326 shp/tiger_pl_14.shp tiger.place | psql -d " + obj.db + " -U " + obj.name + " -h " + obj.host + " -p " + obj.port, {
         encoding: 'utf8'
     }));
     console.log('tiger place uploaded');
