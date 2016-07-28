@@ -182,17 +182,38 @@ function upload() {
 //add keys and index
 function manipulate() {
     console.log('beginning data manipulation')
-        //     client.connect();
+        
+var sql = "alter table carto.bg add column geonum bigint; update carto.bg set geonum = ('1' || geoid)::bigint; alter table carto.bg add column state integer; update carto.bg set state=statefp::integer; alter table carto.bg add column county integer; update carto.bg set county=countyfp::integer; alter table carto.bg rename column name to geoname; alter table carto.bg rename column tractce to tract; alter table carto.bg rename column blkgrpce to bg; alter table carto.bg drop column statefp; alter table carto.bg drop column countyfp; CREATE INDEX carto_bg_geoid ON carto.bg USING btree (geoid); CREATE UNIQUE INDEX carto_bg_geonum_idx ON carto.bg USING btree (geonum); CREATE INDEX carto_bg_state_idx ON carto.bg USING btree (state); CREATE INDEX bg_geom_gist ON carto.bg USING gist (geom);" +
+   
+"alter table carto.county add column geonum bigint; update carto.county set geonum = ('1' || geoid)::bigint; alter table carto.county rename column name to geoname; alter table carto.county add column state integer; update carto.county set state=statefp::integer; alter table carto.county add column county integer; update carto.county set county=countyfp::integer; alter table carto.county drop column statefp; alter table carto.county drop column countyfp; CREATE INDEX carto_county_geoid ON carto.county USING btree (geoid); CREATE UNIQUE INDEX carto_county_geonum_idx ON carto.county USING btree (geonum); CREATE INDEX carto_county_state_idx ON carto.county USING btree (state); CREATE INDEX county_geom_gist ON carto.county USING gist (geom);" +  
+    
+"alter table carto.place add column geonum bigint; update carto.place set geonum = ('1' || geoid)::bigint; alter table carto.place rename column name to geoname; alter table carto.place add column state integer; update carto.place set state=statefp::integer; alter table carto.place add column place integer; update carto.place set place=placefp::integer; alter table carto.place drop column statefp; alter table carto.place drop column placefp; CREATE INDEX carto_place_geoid ON carto.place USING btree (geoid); CREATE UNIQUE INDEX carto_place_geonum_idx ON carto.place USING btree (geonum); CREATE INDEX carto_place_state_idx ON carto.place USING btree (state); CREATE INDEX place_geom_gist ON carto.place USING gist (geom);" +
 
-    //     var query = client.query("");
+"alter table carto.state add column geonum bigint; update carto.state set geonum = ('1' || geoid)::bigint; alter table carto.state rename column name to geoname; alter table carto.state add column state integer; update carto.state set state=statefp::integer; alter table carto.state rename column stusps to abbrev; alter table carto.state drop column statefp; CREATE INDEX carto_state_geoid ON carto.state USING btree (geoid); CREATE UNIQUE INDEX carto_state_geonum_idx ON carto.state USING btree (geonum); CREATE INDEX carto_state_state_idx ON carto.state USING btree (state); CREATE INDEX state_geom_gist ON carto.state USING gist (geom);" +
 
-    //     query.on('end', function() {
-    //         client.end();
-    //         console.log('end manipulation');
-    //         cleanup();
-    //     });
+"alter table carto.tract add column geonum bigint; update carto.tract set geonum = ('1' || geoid)::bigint; alter table carto.tract rename column name to geoname; alter table carto.tract add column state integer; update carto.tract set state=statefp::integer; alter table carto.tract add column county integer; update carto.tract set county=countyfp::integer; alter table carto.tract rename column tractce to tract; alter table carto.tract drop column statefp; alter table carto.tract drop column countyfp; CREATE INDEX carto_tract_geoid ON carto.tract USING btree (geoid); CREATE UNIQUE INDEX carto_tract_geonum_idx ON carto.tract USING btree (geonum); CREATE INDEX carto_tract_state_idx ON carto.tract USING btree (state); CREATE INDEX tract_geom_gist ON carto.tract USING gist (geom);" +
 
-    //cleanup();
+"alter table tiger.bg add column geonum bigint; update tiger.bg set geonum = ('1' || geoid)::bigint; alter table tiger.bg add column state integer; update tiger.bg set state=statefp::integer; alter table tiger.bg add column county integer; update tiger.bg set county=countyfp::integer; alter table tiger.bg rename column namelsad to geoname; alter table tiger.bg rename column tractce to tract; alter table tiger.bg rename column blkgrpce to bg; alter table tiger.bg drop column statefp; alter table tiger.bg drop column countyfp; CREATE INDEX bg_geom_gist ON tiger.bg USING gist (geom); CREATE INDEX tiger_bg_geoid ON tiger.bg USING btree (geoid); CREATE UNIQUE INDEX tiger_bg_geonum_idx ON tiger.bg USING btree (geonum); CREATE INDEX tiger_bg_state_idx ON tiger.bg USING btree (state);" +
+
+"alter table tiger.county add column geonum bigint; update tiger.county set geonum = ('1' || geoid)::bigint; alter table tiger.county rename column name to geoname; alter table tiger.county add column state integer; update tiger.county set state=statefp::integer; alter table tiger.county add column county integer; update tiger.county set county=countyfp::integer; alter table tiger.county drop column statefp; alter table tiger.county drop column countyfp; CREATE INDEX county_geom_gist ON tiger.county USING gist (geom); CREATE INDEX tiger_county_geoid ON tiger.county USING btree (geoid); CREATE UNIQUE INDEX tiger_county_geonum_idx ON tiger.county USING btree (geonum); CREATE INDEX tiger_county_state_idx ON tiger.county USING btree (state);" +
+
+"alter table tiger.place add column geonum bigint; update tiger.place set geonum = ('1' || geoid)::bigint; alter table tiger.place rename column namelsad to geoname; alter table tiger.place rename column name to geoname_simple; alter table tiger.place add column state integer; update tiger.place set state=statefp::integer; alter table tiger.place add column place integer; update tiger.place set place=placefp::integer; alter table tiger.place drop column statefp; alter table tiger.place drop column placefp; CREATE INDEX place_geom_gist ON tiger.place USING gist (geom); CREATE INDEX tiger_place_geoid ON tiger.place USING btree (geoid); CREATE UNIQUE INDEX tiger_place_geonum_idx ON tiger.place USING btree (geonum); CREATE INDEX tiger_place_state_idx ON tiger.place USING btree (state);" +
+
+"alter table tiger.state add column geonum bigint; update tiger.state set geonum = ('1' || geoid)::bigint; alter table tiger.state rename column name to geoname; alter table tiger.state add column state integer; update tiger.state set state=statefp::integer; alter table tiger.state rename column stusps to abbrev; CREATE INDEX state_geom_gist ON tiger.state USING gist (geom); CREATE INDEX tiger_state_geoid ON tiger.state USING btree (geoid); CREATE UNIQUE INDEX tiger_state_geonum_idx ON tiger.state USING btree (geonum); CREATE INDEX tiger_state_state_idx ON tiger.state USING btree (state);" +
+
+"alter table tiger.tract add column geonum bigint; update tiger.tract set geonum = ('1' || geoid)::bigint; alter table tiger.tract rename column namelsad to geoname; alter table tiger.tract rename column name to simple_name; alter table tiger.tract add column state integer; update tiger.tract set state=statefp::integer; alter table tiger.tract add column county integer; update tiger.tract set county=countyfp::integer; alter table tiger.tract rename column tractce to tract; alter table tiger.tract drop column statefp; alter table tiger.tract drop column countyfp; CREATE INDEX tiger_tract_geoid ON tiger.tract USING btree (geoid); CREATE UNIQUE INDEX tiger_tract_geonum_idx ON tiger.tract USING btree (geonum); CREATE INDEX tiger_tract_state_idx ON tiger.tract USING btree (state); CREATE INDEX tract_geom_gist ON tiger.tract USING gist (geom);";
+
+client.connect();
+
+var query = client.query(sql);
+
+query.on('end', function() {
+client.end();
+console.log('end manipulation');
+cleanup();
+});
+
+    
 }
 
 

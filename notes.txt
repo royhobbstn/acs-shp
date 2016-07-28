@@ -3,3 +3,49 @@ sudo apt-get update
 sudo apt-get upgrade
 
 sudo apt-get install postgis
+
+
+
+
+
+
+
+CHECKSUMS?
+
+
+
+2009 - 2013 
+
+TIGER
+tract: "Census Tract 110.14"
+state: "North Carolina"
+place: "Ragland town"
+county: "Sierra County"
+bg: "Block Group 4"
+
+
+CARTO
+tract: "Census Tract 9557.02, Cherokee County, Alabama                         "
+state: "Maryland"
+place: "Waterloo town, Alabama                                                 "
+county: "Gila County, Arizona"
+bg: "Block Group 1, Census Tract 38.02, Jefferson County, Alabama              "
+
+
+2010 - 2014 
+
+TIGER
+tract: "Census Tract 110.21"
+state: "New Mexico"
+place: "Sylvania town"
+county: "Minnehaha"   ****** + County
+bg: "Block Group 2"
+
+
+CARTO
+tract: "9562.02" + Census Tract, + County, + State
+state: "Nebraska"
+place: "Lockhart" town, + State
+county: "Baldwin" + County, State
+bg: "2"
+
